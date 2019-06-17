@@ -1,0 +1,23 @@
+{
+    "name": "07-restserver",
+    "version": "1.0.0",
+    "description": "",
+    "engines":{
+        "node":"10.15.3"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon server/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Gerard Altamirano",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^3.0.6",
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.6.0",
+        "mongoose-unique-validator": "^2.0.3",
+        "underscore": "^1.9.1"
+    }
+}
