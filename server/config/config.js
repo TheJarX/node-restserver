@@ -21,10 +21,10 @@ process.env.EXPIRES_TOKEN = 60 * 60 * 24 * 30;
 process.env.TOKEN_SEED = process.env.TOKEN_SEED || 'token_dev_seed';
 
 // ============================
-//  DB
+//  DB Config
 // ============================
-let urlDb = process.env.NODE_ENV =='dev'?
-            'mongodb://localhost:27017/cafe':
-            process.env.MONGO_URI;
+let urlDb = process.env.NODE_ENV == 'dev' ?
+    'mongodb://localhost:27017/cafe' :
+    process.env.MONGO_URI;
 
 process.env.URLDB = urlDb;

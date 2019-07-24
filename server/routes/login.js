@@ -41,7 +41,7 @@ app.post('/login',(req, res) => {
         // En expiresIn viene lo siquiente, ms*min*hrs*days 
         let token = jwt.sign({
             usuario: usuarioDb,
-        }, 'secret', { expiresIn: process.env.EXPIRES_TOKEN });
+        }, process.env.TOKEN_SEED, { expiresIn: process.env.EXPIRES_TOKEN });
 
         res.json({
                 ok:true,

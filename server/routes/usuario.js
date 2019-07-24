@@ -8,9 +8,10 @@ const _ = require('underscore');
 const app = express();
 
 const Usuario = require('../models/usuario');
+const { verificarToken, verificarAdminRole } = require('../middlewares/auth');
 
 
-app.get('/usuario', async function(req, res) {
+app.get('/usuario', verificarToken, async function(req, res) {
 
     let from =  req.query.from || 0;
 
@@ -49,7 +50,7 @@ app.get('/usuario', async function(req, res) {
     
 });
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', [verificarToken, verificarAdminRole], function(req, res) {
 
     let body = req.body;
 
@@ -59,7 +60,6 @@ app.post('/usuario', function(req, res) {
         password: bcrypt.hashSync(body.password, saltRounds ),
         role: body.role
     });
-
     usuario.save(  (err, usuarioDb) =>{
 
         if(err){
@@ -82,7 +82,7 @@ app.post('/usuario', function(req, res) {
 });
 
 
-app.put('/usuario/:id', function(req, res) {
+app.put('/usuario/:id', [verificarToken, verificarAdminRole], function(req, res) {
 
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre','email','imagen','role','estado']);  
@@ -108,7 +108,7 @@ app.put('/usuario/:id', function(req, res) {
    
 });
 
-app.delete('/usuario/:id?', function(req, res) {
+app.delete('/usuario/:id?', [verificarToken, verificarAdminRole], function(req, res) {
    
     let id= req.params.id;
 
