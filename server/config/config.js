@@ -28,3 +28,10 @@ let urlDb = process.env.NODE_ENV == 'dev' ?
     process.env.MONGO_URI;
 
 process.env.URLDB = urlDb;
+
+// ============================
+// Google Client ID (el mio)
+// ============================
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || 
+'233238598966-f89q1p09oflv3apbhtt6o0lh4dvjivq3.apps.googleusercontent.com';
